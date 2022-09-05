@@ -4,7 +4,8 @@ Vi is short for “visual editor” and it is available in nearly identical form
 ## Why Neovim
 ## The main features of TE-Neovim
 ## Installation
-## Configuration
+## 
+![Neovim Configuration Layout](./figure/VimConfigarationLayout.png)
 ├── init.vim
 └── lua                                   all lua configuration files
     ├── basic.lua                         Neovim basic configuration
