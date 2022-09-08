@@ -1,6 +1,10 @@
 # TE-Neovim
 ## From Vi to Vim, then to Neovim
 Vi is short for “visual editor” and it is available in nearly identical form on every UNIX-like system. 
+
+Vim is a Unix based text editor that is fast and efficient as Vim can be run through a terminal. Vim is also commonly referred to Vi as the terms are interchangeable and both terms usually refer to Vim.
+NeoVim is a refactor of Vim but is not a rewrite of but is an extension that removes the core issues of Vim. 
+
 ## Why Neovim
 ## The main features of TE-Neovim
 ## Installation
