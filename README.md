@@ -4,11 +4,13 @@ Vi is short for “visual editor” and it is available in nearly identical form
 ## Why Neovim
 ## The main features of TE-Neovim
 ## Installation
-## 
+## Configuration Layout
 ![Neovim Configuration Layout](./figure/VimConfigarationLayout.png)
 ├── init.vim
 └── lua                                   all lua configuration files
-    ├── basic.lua                         Neovim basic configuration
+    ├── basic                             Neovim basic configuration
+    │   ├── static.lua
+    │   ├── dynamic.lua
     ├── keybindings.lua                   For keybindings
     ├── lsp                               LSP (Language Server Protocol) 
     │   ├── diagnostic_signs.lua
@@ -26,6 +28,7 @@ Vi is short for “visual editor” and it is available in nearly identical form
     │   ├── telescope.lua
     │   └── which-key.lua
     └── plugins.lua                      Plugin management
+## Introduction of vimscript and lua
 ## Lisence
 ## Contributor
 ## Reference

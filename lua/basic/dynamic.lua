@@ -17,9 +17,9 @@ vim.o.scrolloff = 5
 vim.o.sidescrolloff = 5
 
 -- indentation, 2 spaces equal to one tab
-vim.o.tabstop = 2
-vim.bo.tabstop = 2
-vim.o.softtabstop = 2
+vim.o.tabstop = 4
+vim.bo.tabstop = 4
+vim.o.softtabstop = 4
 vim.o.shiftround = true
 
 -- >> <<, moving length

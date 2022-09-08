@@ -35,10 +35,10 @@ vim.o.list = true
 vim.o.listchars = "space:~"
 
 -- always show tabline, even only one file opened
--- vim.o.showtabline = 2
+vim.o.showtabline = 2
 
 -- Reference line to indicate the maximum length
--- vim.wo.colorcolumn = "80"
+vim.wo.colorcolumn = "80"
 
 -- theme settings
 -- vim.o.termguicolors = true
@@ -50,5 +50,10 @@ vim.o.listchars = "space:~"
 
 -- still show mode
 -- vim.o.showmode = true
+
+vim.o.syntax = "enable"
+
+vim.o.ruler = true
+
 
 --#endregion
