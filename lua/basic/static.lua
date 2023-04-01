@@ -49,7 +49,7 @@ vim.wo.colorcolumn = "80"
 -- vim.wo.signcolumn = "yes"
 
 -- still show mode
--- vim.o.showmode = true
+vim.o.showmode = true
 
 vim.o.syntax = "enable"
 
