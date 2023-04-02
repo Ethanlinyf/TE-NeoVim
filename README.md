@@ -11,30 +11,8 @@ NeoVim is a refactor of Vim, primarily a more maintainable and extensible comman
 ## The main features of TE-Neovim
 ## Installation
 ## Configuration Layout
-![Neovim Configuration Layout](./figure/TE-NeoVim_diagram_3.jpg)
+![Neovim Configuration Layout](./figure/TE-NeoVim_diagram_31.jpg)
 
-├── init.vim
-└── lua                                   all lua configuration files
-    ├── basic                             Neovim basic configuration
-    │   ├── static.lua
-    │   ├── dynamic.lua
-    ├── keybindings.lua                   For keybindings
-    ├── lsp                               LSP (Language Server Protocol) 
-    │   ├── diagnostic_signs.lua
-    │   ├── language_servers.lua
-    │   └── nvim-cmp-config.lua
-    ├── plugin-config                     Plugins for various purposes
-    │   ├── bufferline.lua
-    │   ├── comment.lua
-    │   ├── nvim-autopairs.lua
-    │   ├── nvim-colorizer.lua
-    │   ├── nvim-tree.lua
-    │   ├── nvim-treesitter.lua
-    │   ├── rust-tools.lua
-    │   ├── surround.lua
-    │   ├── telescope.lua
-    │   └── which-key.lua
-    └── plugins.lua                      Plugin management
 ## Introduction of vimscript and lua
 ## Keybindings
 In Neovim, the keybindings are implemented through APIs. Neovim provides a list of API functions to set, get and delete mappings:
