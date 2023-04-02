@@ -11,7 +11,7 @@ NeoVim is a refactor of Vim, primarily a more maintainable and extensible comman
 ## The main features of TE-Neovim
 ## Installation
 ## Configuration Layout
-![Neovim Configuration Layout](./figure/TE-NeoVim_diagram.jpg)
+![Neovim Configuration Layout](./figure/TE-NeoVim_diagram_3.jpg)
 
 ├── init.vim
 └── lua                                   all lua configuration files
