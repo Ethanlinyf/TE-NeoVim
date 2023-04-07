@@ -8,7 +8,7 @@ Vim is a Unix based text editor that is fast and efficient as it can be run thro
 NeoVim is a refactor of Vim, primarily a more maintainable and extensible command-line interface (CLI) application, better support for asynchronous plugin execution and built-in terminal emulation. 
 
 ## Why Neovim
-## The main features of TE-Neovim
+## Main Features
 ## Installation
 ## Configuration Layout
 ![Neovim Configuration Layout](./nvim/figure/TE-NeoVim_diagram_31.jpg)
