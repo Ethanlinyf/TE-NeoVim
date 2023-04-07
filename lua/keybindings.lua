@@ -6,7 +6,7 @@
    Under ThingsEngine Project: https://www.thethingsengine.org
    -------------------------------------------------------------------
    Commentary:
-   Basic configurations for TE-Neovim
+   Basic keybindings configurations 
    -------------------------------------------------------------------
 --]]
 
