@@ -65,7 +65,7 @@ vim.o.swapfile = false
 -- smaller updatetime 
 vim.o.updatetime = 300
 -- waiting mappings
-vim.o.timeoutlen = 1000
+vim.o.timeoutlen = 500
 
 -- split window 
 vim.o.splitbelow = true
