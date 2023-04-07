@@ -11,19 +11,7 @@ NeoVim is a refactor of Vim, primarily a more maintainable and extensible comman
 ## The main features of TE-Neovim
 ## Installation
 ## Configuration Layout
-![Neovim Configuration Layout](./figure/TE-NeoVim_diagram_31.jpg)
-
-## Introduction of vimscript and lua
-## Keybindings
-In Neovim, the keybindings are implemented through APIs. Neovim provides a list of API functions to set, get and delete mappings:
-- Modes
-- Leader Key: Space
-- Local Variables
-  map
-  opt
-- Examples:
-
+![Neovim Configuration Layout](./nvim/figure/TE-NeoVim_diagram_31.jpg)
 
 ## Lisence
-## Contributor
 ## Reference
