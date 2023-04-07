@@ -11,7 +11,7 @@ NeoVim is a refactor of Vim, primarily a more maintainable and extensible comman
 ## Main Features
 ## Installation
 ## Configuration Layout
-![Neovim Configuration Layout](./nvim/figure/TE-NeoVim_diagram_31.jpg)
+![Neovim Configuration Layout](./nvim/figure/configuration_diagram_31.jpg)
 
 ## Licence
 This program is free software. You can redistribute and/or modify it under [Apache License](https://github.com/neovim/neovim/blob/master/LICENSE.txt) published by the Apache Software Foundation, as well as Copyleft under [ThingsEngine](https://thethingsengine.org) project. The contributions are shared with the hope that this program will be useful, helpful and inspiring, but without any warranty; without even the implied warranty of merchantability or fitness for a particular purpose.
