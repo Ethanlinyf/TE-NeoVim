@@ -1,8 +1,8 @@
 --[[
-   Copyleft (CL) 2022-2032 Zachary Cannon & YF Lin
+   Copyleft (CL) 2022-2032 Ethan YF Lin
 
    Something good as indicated, by Dr YF Lin <e.yflin@gmail.com>
-   URL: https://github.com/Ethanlinyf/TE-Neovim
+   URL: https://github.com/Ethanlinyf/TE-NeoVim
    Under ThingsEngine Project: https://www.thethingsengine.org
    -------------------------------------------------------------------
    Commentary:
@@ -65,7 +65,7 @@ vim.o.swapfile = false
 -- smaller updatetime 
 vim.o.updatetime = 300
 -- waiting mappings
-vim.o.timeoutlen = 100
+vim.o.timeoutlen = 1000
 
 -- split window 
 vim.o.splitbelow = true

@@ -1,14 +1,28 @@
+--[[
+   Copyleft (CL) 2022-2032 Ethan YF Lin
+
+   Something good as indicated, by Dr YF Lin <e.yflin@gmail.com>
+   URL: https://github.com/Ethanlinyf/TE-NeoVim
+   Under ThingsEngine Project: https://www.thethingsengine.org
+   -------------------------------------------------------------------
+   Commentary:
+   Basic configurations for TE-Neovim
+   -------------------------------------------------------------------
+--]]
+
 -- Modes
 --   normal_mode = "n",
 --   insert_mode = "i",
 --   visual_mode = "v",
 --   visual_block_mode = "x",
---   term_mode = "t",
+--   terminal_mode = "t",
 --   command_mode = "c",
 
 -- leader key space
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
+vim.g.mapleader = ","
+vim.g.maplocalleader = ","
+-- vim.api.nvim_set_var('mapleader', ',')
+-- vim.api.nvim_set_var('maplocalleader', ',')
 
 local opt = {
   noremap = true,
@@ -40,6 +54,7 @@ map("n", "<C-j>", "5j", opt)
 map("n", "<C-k>", "5k", opt)
 map("v", "<C-j>", "5j", opt)
 map("v", "<C-k>", "5k", opt)
+
 -- ctrl u / ctrl + d  move half of screen
 map("n", "<C-u>", "10k", opt)
 map("n", "<C-d>", "10j", opt)
@@ -51,6 +66,7 @@ map("v", "/", "/\\v", { noremap = true, silent = false })
 -- visual mode indent
 map("v", "<", "<gv", opt)
 map("v", ">", ">gv", opt)
+
 -- move the marked region
 map("v", "J", ":move '>+1<CR>gv-gv", opt)
 map("v", "K", ":move '<-2<CR>gv-gv", opt)
@@ -62,16 +78,16 @@ map("v", "p", '"_dP', opt)
 map("n", "qq", ":q!<CR>", opt)
 map("n", "<leader>q", ":qa!<CR>", opt)
 
--- insert in the end
--- map("i", "<C-h>", "<ESC>I", opt)
--- map("i", "<C-l>", "<ESC>A", opt)
+-- insert in the beginning and  end
+map("i", "<C-h>", "<ESC>I", opt) 
+map("i", "<C-l>", "<ESC>A", opt)
 
 ------------------------------------------------------------------
 -- windows split the windows
 ------------------------------------------------------------------
 -- ignor s default 
 map("n", "s", "", opt)
-map("n", "sv", ":vsp<CR>", opt)
+map("n", "sv", ":vsp<CR>", opt) -- hold "s" to press "v"
 map("n", "sh", ":sp<CR>", opt)
 -- close recent window
 map("n", "sc", "<C-w>c", opt)
@@ -88,15 +104,15 @@ map("n", "<leader>j", "<C-w>j", opt)
 map("n", "<leader>k", "<C-w>k", opt)
 map("n", "<leader>l", "<C-w>l", opt)
 -- horizon change the weight
-map("n", "<C-Left>", ":vertical resize -2<CR>", opt)
-map("n", "<C-Right>", ":vertical resize +2<CR>", opt)
+map("n", "<C-Left>", ":vertical resize -2<CR>", opt) -- not effective in Mac
+map("n", "<C-Right>", ":vertical resize +2<CR>", opt) -- not effective in Mac
 map("n", "s,", ":vertical resize -10<CR>", opt)
 map("n", "s.", ":vertical resize +10<CR>", opt)
 -- change the higth
 map("n", "sj", ":resize +10<CR>", opt)
 map("n", "sk", ":resize -10<CR>", opt)
-map("n", "<C-Down>", ":resize +2<CR>", opt)
-map("n", "<C-Up>", ":resize -2<CR>", opt)
+map("n", "<A-Down>", ":resize +2<CR>", opt)
+map("n", "<A-Up>", ":resize -2<CR>", opt)
 -- set back to equal
 map("n", "s=", "<C-w>=", opt)
 
