@@ -74,6 +74,21 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  ["gruvbox.nvim"] = {
+    loaded = true,
+    path = "/Users/ethanlin/.local/share/nvim/site/pack/packer/start/gruvbox.nvim",
+    url = "https://github.com/ellisonleao/gruvbox.nvim"
+  },
+  ["lush.nvim"] = {
+    loaded = true,
+    path = "/Users/ethanlin/.local/share/nvim/site/pack/packer/start/lush.nvim",
+    url = "https://github.com/rktjmp/lush.nvim"
+  },
+  ["nord.nvim"] = {
+    loaded = true,
+    path = "/Users/ethanlin/.local/share/nvim/site/pack/packer/start/nord.nvim",
+    url = "https://github.com/shaunsingh/nord.nvim"
+  },
   ["packer.nvim"] = {
     loaded = true,
     path = "/Users/ethanlin/.local/share/nvim/site/pack/packer/start/packer.nvim",
