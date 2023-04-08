@@ -22,4 +22,7 @@ return require('packer').startup(function()
     -- telescope extensions
     use("LinArcX/telescope-env.nvim")
     use("nvim-telescope/telescope-ui-select.nvim")
+
+    -- surround
+    use("ur4ltz/surround.nvim")
 end)

@@ -109,6 +109,11 @@ _G.packer_plugins = {
     path = "/Users/ethanlin/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
+  ["surround.nvim"] = {
+    loaded = true,
+    path = "/Users/ethanlin/.local/share/nvim/site/pack/packer/start/surround.nvim",
+    url = "https://github.com/ur4ltz/surround.nvim"
+  },
   ["telescope-env.nvim"] = {
     loaded = true,
     path = "/Users/ethanlin/.local/share/nvim/site/pack/packer/start/telescope-env.nvim",
