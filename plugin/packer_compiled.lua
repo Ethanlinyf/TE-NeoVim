@@ -84,10 +84,15 @@ _G.packer_plugins = {
     path = "/Users/ethanlin/.local/share/nvim/site/pack/packer/start/lush.nvim",
     url = "https://github.com/rktjmp/lush.nvim"
   },
-  ["nord.nvim"] = {
+  ["nvim-tree.lua"] = {
     loaded = true,
-    path = "/Users/ethanlin/.local/share/nvim/site/pack/packer/start/nord.nvim",
-    url = "https://github.com/shaunsingh/nord.nvim"
+    path = "/Users/ethanlin/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",
+    url = "https://github.com/kyazdani42/nvim-tree.lua"
+  },
+  ["nvim-web-devicons"] = {
+    loaded = true,
+    path = "/Users/ethanlin/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
+    url = "https://github.com/kyazdani42/nvim-web-devicons"
   },
   ["packer.nvim"] = {
     loaded = true,
