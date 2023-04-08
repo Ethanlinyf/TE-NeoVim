@@ -161,5 +161,23 @@ pluginKeys.telescopeList = {
   },
 }
 
+----------------------------------------------------------------------
+-- comment
+-- see ./lua/plugin-config/comment.lua
+pluginKeys.comment = {
+  -- Normal Mode
+  toggler = {
+    line = "gcc", -- line comment
+    block = "gbc", -- block comment
+  },
+  -- Visual Mode
+  opleader = {
+    line = "gc",
+    bock = "gb",
+  },
+}
+-- ctrl + /
+map("n", "<C-_>", "gcc", { noremap = false })
+map("v", "<C-_>", "gcc", { noremap = false })
 
 return pluginKeys

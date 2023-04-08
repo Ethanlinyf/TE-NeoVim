@@ -25,4 +25,7 @@ return require('packer').startup(function()
 
     -- surround
     use("ur4ltz/surround.nvim")
+
+    -- Comment
+    use("numToStr/Comment.nvim")
 end)
