@@ -168,4 +168,28 @@ map("n", "<leader>bl", ":BufferLineCloseRight<CR>", opt)
 map("n", "<leader>bh", ":BufferLineCloseLeft<CR>", opt)
 map("n", "<leader>bc", ":BufferLinePickClose<CR>", opt)
 
+-- Telescope
+-- find files
+map("n", "<C-p>", ":Telescope find_files<CR>", opt)
+-- find by grep
+map("n", "<C-f>", ":Telescope live_grep<CR>", opt)
+-- Telescope mappings in List with different modes
+pluginKeys.telescopeList = {
+  i = {
+    -- move up and down
+    ["<C-j>"] = "move_selection_next",
+    ["<C-k>"] = "move_selection_previous",
+    ["<Down>"] = "move_selection_next",
+    ["<Up>"] = "move_selection_previous",
+    -- history
+    ["<C-n>"] = "cycle_history_next",
+    ["<C-p>"] = "cycle_history_prev",
+    -- close window
+    ["<C-c>"] = "close",
+    -- preview_scrolling_up and down
+    ["<C-u>"] = "preview_scrolling_up",
+    ["<C-d>"] = "preview_scrolling_down",
+  },
+}
+
 return pluginKeys

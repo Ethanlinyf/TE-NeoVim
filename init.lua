@@ -25,17 +25,12 @@ require('plugins')
 require("colorscheme")
 
 -- plugin-config
-require('plugin-config/nvim-tree')
-require('plugin-config/bufferline')
-require('plugin-config/lualine')
--- require('plugin-config/telescope')
--- 
--- require('plugin-config/dashboard')
--- require("plugin-config/surround")
--- require("plugin-config/comment")
-
--- require("lsp/setup")
--- require("lsp/cmp")
--- require("lsp/ui")
-
+require('plugin-config.nvim-tree')
+require('plugin-config.bufferline')
+require('plugin-config.lualine')
+require('plugin-config.telescope')
+require("plugin-config.dashboard")
+require("plugin-config.project")
+require("plugin-config.comment")
+require("plugin-config.surround")
 

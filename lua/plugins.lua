@@ -25,6 +25,18 @@ packer.startup({
          -- lualine
          use({ "nvim-lualine/lualine.nvim", requires = { "kyazdani42/nvim-web-devicons" } })
          use("arkav/lualine-lsp-progress")
+         -- telescope
+         use { 'nvim-telescope/telescope.nvim', requires = { "nvim-lua/plenary.nvim" } }
+         use "LinArcX/telescope-env.nvim"
+         use { "nvim-telescope/telescope-ui-select.nvim" }
+         -- dashboard-nvim
+         use({"glepnir/dashboard-nvim", commit = "a36b3232c98616149784f2ca2654e77caea7a522" })
+         -- project
+         use("ahmedkhalf/project.nvim")
+         -- comment
+         use("numToStr/Comment.nvim")
+         -- nvim-surround
+         use("ur4ltz/surround.nvim")
 
       end,
       config = {
