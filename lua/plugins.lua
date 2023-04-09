@@ -30,7 +30,7 @@ packer.startup({
          use "LinArcX/telescope-env.nvim"
          use { "nvim-telescope/telescope-ui-select.nvim" }
          -- dashboard-nvim
-         use({"glepnir/dashboard-nvim", commit = "a36b3232c98616149784f2ca2654e77caea7a522" })
+         use("glepnir/dashboard-nvim")
          -- project
          use("ahmedkhalf/project.nvim")
          -- comment
