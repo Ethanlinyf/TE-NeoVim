@@ -11,14 +11,21 @@
    -------------------------------------------------------------------
 --]]
 
--- basic configurations
+-- Basic Configuration
 require('basic/static')
 require('basic/dynamic')
 
--- require('keybindings')
+-- Keybinding
+require('keybindings')
 
--- require('plugins')
--- require('plugin-config/nvim-tree')
+-- Plugin
+require('plugins')
+
+-- theme
+require("colorscheme")
+
+-- plugin-config
+require('plugin-config/nvim-tree')
 -- require('plugin-config/bufferline')
 -- require('plugin-config/telescope')
 -- require('plugin-config/lualine')
