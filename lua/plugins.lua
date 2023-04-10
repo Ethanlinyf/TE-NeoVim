@@ -56,9 +56,9 @@ packer.startup({
          use("hrsh7th/cmp-buffer") -- { name = 'buffer' },
          use("hrsh7th/cmp-path") -- { name = 'path' }
          use("hrsh7th/cmp-cmdline") -- { name = 'cmdline' }
-
          -- normal programming snipets
          use("rafamadriz/friendly-snippets")
+
          -- Lua development
          use("folke/neodev.nvim")
 
