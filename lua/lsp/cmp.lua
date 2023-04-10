@@ -18,8 +18,10 @@ cmp.setup({
 -- For luasnip users.-- { name = 'luasnip' },--For ultisnips users.-- { name = 'ultisnips' },-- -- For snippy users.-- { name = 'snippy' },
   }, { { name = "buffer" }, { name = "path" } }),
 
--- 快捷键设置
+-- keybindings
   mapping = require("keybindings").cmp(cmp),
+  -- use lspkind-nvim show the types
+  formatting = require('lsp.ui').formatting
 })
 
 -- / serching mode using buffer 

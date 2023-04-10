@@ -36,7 +36,7 @@ packer.startup({
          use("numToStr/Comment.nvim")
          -- nvim-surround
          use("ur4ltz/surround.nvim")
-         -- treesitter （新增）
+         -- treesitter 
          use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
          ------------------------------------------------------------
          -- lsp
@@ -61,8 +61,29 @@ packer.startup({
 
          -- Lua development
          use("folke/neodev.nvim")
-
+         -- ui
+         use("onsails/lspkind-nvim")
+         -- indent-blankline
+         use("lukas-reineke/indent-blankline.nvim")
+         use("tami5/lspsaga.nvim" )
+         -- use({
+         --       "glepnir/lspsaga.nvim",
+         --       opt = true,
+         --       branch = "main",
+         --       event = "LspAttach",
+         --       config = function()
+         --          require("lspsaga").setup({})
+         --       end,
+         --       requires = {
+         --          {"nvim-tree/nvim-web-devicons"},
+         --          --Please make sure you install markdown and markdown_inline parser
+         --          {"nvim-treesitter/nvim-treesitter"}
+         --       }
+         -- })
+         -- use("mhartington/formatter.nvim")
+         use({ "jose-elias-alvarez/null-ls.nvim", requires = "nvim-lua/plenary.nvim" })
       end,
+
       config = {
          -- fixed the version in the snapshots directory
          snapshot_path = require("packer.util").join_paths(vim.fn.stdpath("config"), "snapshots"),

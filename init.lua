@@ -34,7 +34,10 @@ require("plugin-config.project")
 require("plugin-config.comment")
 require("plugin-config.surround")
 require("plugin-config.nvim-treesitter")
+require("plugin-config.indent-blankline")
 
 -- lsp
 require("lsp.setup")
 require("lsp.cmp")
+require("lsp.ui")
+require("lsp.null-ls")
