@@ -24,7 +24,7 @@ telescope.setup({
         -- move up and down
         [uTelescope.move_selection_next] = "move_selection_next",
         [uTelescope.move_selection_previous] = "move_selection_previous",
-        -- 历史记录
+        -- history
         [uTelescope.cycle_history_next] = "cycle_history_next",
         [uTelescope.cycle_history_prev] = "cycle_history_prev",
         -- close windows

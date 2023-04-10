@@ -6,3 +6,4 @@ TE-NeoVim-Configuration.org
 Tutorial.org
 init.vim
 packer_compiled.lua
+.luarc.jason

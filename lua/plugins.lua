@@ -1,7 +1,6 @@
 local packer = require("packer")
 
 
-
 packer.startup({
       function(use)-- Packer management for itself
          use 'wbthomason/packer.nvim'
@@ -37,6 +36,31 @@ packer.startup({
          use("numToStr/Comment.nvim")
          -- nvim-surround
          use("ur4ltz/surround.nvim")
+         -- treesitter （新增）
+         use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
+         ------------------------------------------------------------
+         -- lsp
+         use({ "williamboman/mason.nvim" })
+         use({ "williamboman/mason-lspconfig.nvim" })
+
+         -- Lspconfig
+         use({ "neovim/nvim-lspconfig" })
+
+         -- completion engine
+         use("hrsh7th/nvim-cmp")
+         -- snippet 
+         use("hrsh7th/vim-vsnip")
+         -- completion source
+         use("hrsh7th/cmp-vsnip")
+         use("hrsh7th/cmp-nvim-lsp") -- { name = nvim_lsp }
+         use("hrsh7th/cmp-buffer") -- { name = 'buffer' },
+         use("hrsh7th/cmp-path") -- { name = 'path' }
+         use("hrsh7th/cmp-cmdline") -- { name = 'cmdline' }
+
+         -- normal programming snipets
+         use("rafamadriz/friendly-snippets")
+         -- Lua development
+         use("folke/neodev.nvim")
 
       end,
       config = {
