@@ -1,18 +1,18 @@
 local status, mason = pcall(require, "mason")
 if not status then
-  vim.notify("no mason")
+  vim.notify("No mason")
   return
 end
 
 local status, mason_config = pcall(require, "mason-lspconfig")
 if not status then
-  vim.notify("no mason-lspconfig")
+  vim.notify("No mason-lspconfig")
   return
 end
 
 local status, lspconfig = pcall(require, "lspconfig")
 if not status then
-  vim.notify("no lspconfig")
+  vim.notify("No lspconfig")
   return
 end
 
@@ -48,39 +48,44 @@ mason_config.setup({
     "gopls",
     "clangd",
     "cmake",
+    -- "eslint_d",
+    -- "shfmt",
+    -- "prettier",
+    -- "rubocop",
+    -- "fixjson",
   },
 })
 
--- install list
--- { key: server， value: configuration file}
--- key 必须为下列网址列出的 server name，不可以随便写
+-- Install List
+-- { key: server， value: configuration }
+-- key in the following listed  server name
 -- https://github.com/williamboman/nvim-lsp-installer#available-lsps
 local servers = {
   lua_ls = require("lsp.config.lua"), -- lua/lsp/config/lua.lua
-  -- bashls = require("lsp.config.bash"),
-  -- pyright = require("lsp.config.pyright"),
-  -- html = require("lsp.config.html"),
-  -- cssls = require("lsp.config.css"),
-  -- emmet_ls = require("lsp.config.emmet"),
-  -- jsonls = require("lsp.config.json"),
-  -- tsserver = require("lsp.config.typescript"),
-  -- yamlls = require("lsp.config.yamlls"),
-  -- dockerls = require("lsp.config.docker"),
-  -- tailwindcss = require("lsp.config.tailwindcss"),
-  -- rust_analyzer = require("lsp.config.rust"),
-  -- taplo = require("lsp.config.taplo"), -- toml
-  -- gopls = require("lsp.config.gopls"),
+  bashls = require("lsp.config.bash"),
+  pyright = require("lsp.config.pyright"),
+  html = require("lsp.config.html"),
+  cssls = require("lsp.config.css"),
+  emmet_ls = require("lsp.config.emmet"),
+  jsonls = require("lsp.config.json"),
+  tsserver = require("lsp.config.typescript"),
+  yamlls = require("lsp.config.yamlls"),
+  dockerls = require("lsp.config.docker"),
+  tailwindcss = require("lsp.config.tailwindcss"),
+  rust_analyzer = require("lsp.config.rust"),
+  taplo = require("lsp.config.taplo"), -- toml
+  gopls = require("lsp.config.gopls"),
   -- remark_ls = require("lsp.config.markdown"),
-  -- clangd = require("lsp.config.clangd"),
-  -- cmake = require("lsp.config.cmake"),
+  clangd = require("lsp.config.clangd"),
+  cmake = require("lsp.config.cmake"),
 }
 
 for name, config in pairs(servers) do
   if config ~= nil and type(config) == "table" then
-    -- configuration should implement on_setup method
+    -- Custom initialization configuration files must implement the on_setup method
     config.on_setup(lspconfig[name])
   else
-    -- use the default
+    -- use the default parameters
     lspconfig[name].setup({})
   end
 end

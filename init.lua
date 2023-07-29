@@ -1,43 +1,27 @@
+-- require("impatient")
+require("utils.global")
 
---[[
-   Copyleft (CL) 2023-2033 Ethan YF Lin
+require("basic")
+require("keybindings")
 
-   Something good as indicated, by Dr YF Lin <e.yflin@gmail.com>
-   URL: https://github.com/Ethanlinyf/TE-NeoVim
-   Under ThingsEngine Project: https://www.thethingsengine.org
-   -------------------------------------------------------------------
-   Commentary:
-   TE-NeoVim init configurations 
-   -------------------------------------------------------------------
---]]
-
--- Basic Configuration
-require('basic/static')
-require('basic/dynamic')
-
--- Keybinding
-require('keybindings')
-
--- Plugin
-require('plugins')
-
--- theme
+require("plugins")
 require("colorscheme")
-
--- plugin-config
-require('plugin-config.nvim-tree')
-require('plugin-config.bufferline')
-require('plugin-config.lualine')
-require('plugin-config.telescope')
-require("plugin-config.dashboard")
-require("plugin-config.project")
-require("plugin-config.comment")
-require("plugin-config.surround")
-require("plugin-config.nvim-treesitter")
-require("plugin-config.indent-blankline")
-
--- lsp
+require("autocmds")
 require("lsp.setup")
-require("lsp.cmp")
-require("lsp.ui")
--- require("lsp.null-ls")
+
+-- Completion
+require("cmp.setup")
+-- Format
+require("format.setup")
+-- DAP
+require("dap.setup")
+require("dap.vimspector")
+-- utils
+require("utils.fix-yank")
+
+-- [[ Configure Treesitter ]]
+-- See `:help nvim-treesitter`
+require("nvim-treesitter.configs").setup({
+  -- Add languages to be installed here that you want installed for treesitter
+  ensure_installed = { "c", "cpp", "go", "lua", "python", "rust", "typescript", "cmake" },
+})

@@ -7,21 +7,21 @@ end
 
 local status, telescope = pcall(require, "telescope")
 if not status then
-  vim.notify("no telescope")
+  vim.notify("No telescope")
   return
 end
 
 -- local actions = require("telescope.actions")
 telescope.setup({
   defaults = {
-    -- initial_mode: insert, could be as normal
+    -- The initial mode entered after opening the pop-up window, the default is insert, and it can also be normal
     initial_mode = "insert",
     -- vertical , center , cursor
     layout_strategy = "horizontal",
-    -- in window
+    -- Shortcut keys in the window
     mappings = {
       i = {
-        -- move up and down
+        -- move up/down
         [uTelescope.move_selection_next] = "move_selection_next",
         [uTelescope.move_selection_previous] = "move_selection_previous",
         -- history
@@ -30,7 +30,7 @@ telescope.setup({
         -- close windows
         -- ["<esc>"] = actions.close,
         [uTelescope.close] = "close",
-        -- preview_scrolling_up and down
+        -- Scroll the preview window up and down
         [uTelescope.preview_scrolling_up] = "preview_scrolling_up",
         [uTelescope.preview_scrolling_down] = "preview_scrolling_down",
       },
@@ -38,7 +38,7 @@ telescope.setup({
   },
   pickers = {
     find_files = {
-      -- theme = "dropdown", -- optional： dropdown, cursor, ivy
+      -- theme = "dropdown", -- 可选参数： dropdown, cursor, ivy
     },
   },
   extensions = {
@@ -51,8 +51,8 @@ telescope.setup({
   },
 })
 
-vim.keymap.set("n", uTelescope.find_files, ":Telescope find_files<CR>")
-vim.keymap.set("n", uTelescope.live_grep, ":Telescope live_grep<CR>")
+keymap("n", uTelescope.find_files, ":Telescope find_files<CR>")
+keymap("n", uTelescope.live_grep, ":Telescope live_grep<CR>")
 
 pcall(telescope.load_extension, "env")
 -- To get ui-select loaded and working with telescope, you need to call

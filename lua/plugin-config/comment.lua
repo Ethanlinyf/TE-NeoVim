@@ -7,22 +7,22 @@ end
 
 local status, comment = pcall(require, "Comment")
 if not status then
-  vim.notify("No Comment")
+  vim.notify("没有找到 Comment")
   return
 end
 
 local opts = {
   mappings = {
-    -- no extra
+    -- close the extra shortcut
     extra = false,
   },
 
-  -- Normal 
+  -- Normal mode keybindings
   toggler = {
-    line = uComment.toggler.line, -- for line
-    block = uComment.toggler.block, -- for block
+    line = uComment.toggler.line, -- line comment
+    block = uComment.toggler.block, -- block comment
   },
-  -- Visual
+  -- Visual mode
   opleader = {
     line = uComment.opleader.line,
     bock = uComment.opleader.block,

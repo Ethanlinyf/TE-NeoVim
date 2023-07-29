@@ -7,3 +7,7 @@ Tutorial.org
 init.vim
 packer_compiled.lua
 /lua/.luarc.json
+.netrwhist
+plugin
+NeoVimLearn.org
+/install.mjs

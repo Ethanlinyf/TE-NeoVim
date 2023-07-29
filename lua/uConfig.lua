@@ -5,7 +5,7 @@ local M = {
 
     leader_key = " ",
 
-    -- modes
+    -- : mode
     c_next_item = "<C-j>",
     c_prev_item = "<C-k>",
 
@@ -22,7 +22,7 @@ local M = {
     n_v_10k = "<C-u>",
     n_v_10j = "<C-d>",
 
-    -- cmp shortcuts
+    -- cmp keybindings
     cmp_complete = "<A-.>",
     cmp_abort = "<A-,>",
     cmp_confirm = "<CR>",
@@ -41,13 +41,13 @@ local M = {
 
       enable = true,
 
-      -- windows operations
+      -- Windows operations
       split_vertically = "sv",
       split_horizontally = "sh",
       close = "sc",
       close_others = "so",
 
-      -- jumping to
+      -- Jumping between windows
       jump_left = "<A-h>",
       jump_right = "<A-l>",
       jump_up = "<A-k>",
@@ -59,7 +59,7 @@ local M = {
       -- jump_up = "<leader>k",
       -- jump_down = "<leader>l",
 
-      -- change sizes
+      -- Windows Adjustment
       width_decrease = "s,",
       width_increase = "s.",
       height_decrease = "sj",
@@ -124,9 +124,9 @@ local M = {
     copy_absolute_path = "gy",
     toggle_file_info = "I",
     tabnew = "t",
-    -- next level
+    -- 
     cd = "]",
-    -- up level
+    -- 
     dir_up = "[",
   },
 
@@ -151,7 +151,7 @@ local M = {
     find_files = "<C-p>",
     live_grep = "<C-f>",
 
-    -- move up and down
+    -- moving up/down
     move_selection_next = "<C-j>",
     move_selection_previous = "<C-k>",
     -- move_selection_next = "<C-n>",
@@ -159,10 +159,10 @@ local M = {
     -- history
     cycle_history_next = "<Down>",
     cycle_history_prev = "<Up>",
-    -- close windows
+    -- close windows 
     -- close = "<C-c>",
     close = "<esc>",
-    -- preview_scrolling_up and down
+    -- preview_scrolling_up/down
     preview_scrolling_up = "<C-u>",
     preview_scrolling_down = "<C-d>",
   },
@@ -182,10 +182,10 @@ local M = {
     enable = true,
     -- Normal 
     toggler = {
-      line = "gcc",
-      block = "gbc",
+      line = "gcc", -- line comment 
+      block = "gbc", -- block comment 
     },
-    -- Visual
+    -- Visual 
     opleader = {
       line = "gc",
       bock = "gb",
@@ -195,11 +195,11 @@ local M = {
   toggleterm = {
     enable = true,
 
-    -- <leader>ta 
+    -- <leader>ta floating command windows 
     toggle_window_A = "<leader>ta",
-    -- <leader>tb 
+    -- <leader>tb on right 
     toggle_window_B = "<leader>tb",
-    -- <leader>tc 
+    -- <leader>tc button
     toggle_window_C = "<leader>tc",
   },
 

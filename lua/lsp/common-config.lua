@@ -8,7 +8,7 @@ M.keyAttach = function(bufnr)
   require("keybindings").mapLSP(buf_set_keymap)
 end
 
--- disableFormat
+-- Disable the formatting function and hand it over to a special plug-in for processing
 M.disableFormat = function(client)
   if vim.fn.has("nvim-0.8") == 1 then
     client.server_capabilities.documentFormattingProvider = false

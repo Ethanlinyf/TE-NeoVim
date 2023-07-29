@@ -1,228 +1,199 @@
---[[
-   Copyleft (CL) 2022-2032 Ethan YF Lin
-
-   Something good as indicated, by Dr YF Lin <e.yflin@gmail.com>
-   URL: https://github.com/Ethanlinyf/TE-NeoVim
-   Under ThingsEngine Project: https://www.thethingsengine.org
-   -------------------------------------------------------------------
-   Commentary:
-   Basic keybindings configurations 
-   -------------------------------------------------------------------
---]]
+local uConfig = require("uConfig")
+local keys = uConfig.keys
 
 -- Modes
 --   normal_mode = "n",
 --   insert_mode = "i",
 --   visual_mode = "v",
 --   visual_block_mode = "x",
---   terminal_mode = "t",
+--   term_mode = "t",
 --   command_mode = "c",
 
--- leader key space
-vim.g.mapleader = ","
-vim.g.maplocalleader = ","
--- vim.api.nvim_set_var('mapleader', ',')
--- vim.api.nvim_set_var('maplocalleader', ',')
+-- local variables
+local map = vim.api.nvim_set_keymap
 
 local opt = {
   noremap = true,
   silent = true,
 }
+--------------------------------------------------------------------------
 
--- local variable
-local map = vim.api.nvim_set_keymap
+-- leader key empty
+vim.g.mapleader = keys.leader_key
+vim.g.maplocalleader = keys.leader_key
 
--- $ to the end of line ( swap $ and g_)
-map("v", "$", "g_", opt)
-map("v", "g_", "$", opt)
-map("n", "$", "g_", opt)
-map("n", "g_", "$", opt)
+local opts_remap = {
+  remap = true,
+  silent = true,
+}
 
--- conmand line Ctrl+j/k  previous and next ones
-map("c", "<C-j>", "<C-n>", { noremap = false })
-map("c", "<C-k>", "<C-p>", { noremap = false })
+local opts_expr = {
+  expr = true,
+  silent = true,
+}
 
-map("n", "<leader>w", ":w<CR>", opt)
-map("n", "<leader>wq", ":wqa!<CR>", opt)
+-- command mode: Ctrl+j/k  
+keymap("c", keys.c_next_item, "<C-n>", opts_remap)
+keymap("c", keys.c_prev_item, "<C-p>", opts_remap)
 
--- fix :set wrap
-vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
-vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+-- save && quit
+keymap("n", keys.n_save, ":w<CR>")
+keymap("n", keys.n_save_quit, ":wq<CR>")
+keymap("n", keys.n_save_all, ":wa<CR>")
+keymap("n", keys.n_save_all_quit, ":wqa<CR>")
+keymap("n", keys.n_force_quit, ":qa!<CR>")
 
--- scroll view
-map("n", "<C-j>", "5j", opt)
-map("n", "<C-k>", "5k", opt)
-map("v", "<C-j>", "5j", opt)
-map("v", "<C-k>", "5k", opt)
+-- $, end of line (swap $ and g_)
+keymap({ "v", "n" }, "$", "g_")
+keymap({ "v", "n" }, "g_", "$")
 
--- ctrl u / ctrl + d  move half of screen
-map("n", "<C-u>", "10k", opt)
-map("n", "<C-d>", "10j", opt)
+-- scrol up and down to view
+keymap({ "n", "v" }, keys.n_v_5j, "5j")
+keymap({ "n", "v" }, keys.n_v_5k, "5k")
+
+-- ctrl u / ctrl + d  just 9 lines，the default is half screen.
+-- keymap({ "n", "v" }, keys.n_v_10j, "10j")
+-- keymap({ "n", "v" }, keys.n_v_10k, "10k")
 
 -- magic search
-map("n", "/", "/\\v", { noremap = true, silent = false })
-map("v", "/", "/\\v", { noremap = true, silent = false })
+if uConfig.enable_magic_search then
+  keymap({ "n", "v" }, "/", "/\\v", {
+    remap = false,
+    silent = false,
+  })
+else
+  keymap({ "n", "v" }, "/", "/", {
+    remap = false,
+    silent = false,
+  })
+end
 
--- visual mode indent
-map("v", "<", "<gv", opt)
-map("v", ">", ">gv", opt)
+-------------------- fix ------------------------------
 
--- move the marked region
-map("v", "J", ":move '>+1<CR>gv-gv", opt)
-map("v", "K", ":move '<-2<CR>gv-gv", opt)
+-- fix :set wrap
+keymap("n", "j", "v:count == 0 ? 'gj' : 'j'", opts_expr)
+keymap("n", "k", "v:count == 0 ? 'gk' : 'k'", opts_expr)
 
--- visual mode paste
-map("v", "p", '"_dP', opt)
+-- visual mode indentation
+keymap("v", "<", "<gv")
+keymap("v", ">", ">gv")
 
--- exit
-map("n", "qq", ":q!<CR>", opt)
-map("n", "<leader>q", ":qa!<CR>", opt)
+-- move the selected up/down
+keymap("x", "J", ":move '>+1<CR>gv-gv")
+keymap("x", "K", ":move '<-2<CR>gv-gv")
 
--- insert in the beginning and  end
-map("i", "<C-h>", "<ESC>I", opt) 
-map("i", "<C-l>", "<ESC>A", opt)
+-- in visual mode to paste, not copy
+keymap("x", "p", '"_dP')
 
 ------------------------------------------------------------------
--- windows split the windows
+-- s_windows split
 ------------------------------------------------------------------
--- ignor s default 
-map("n", "s", "", opt)
-map("n", "sv", ":vsp<CR>", opt) -- hold "s" to press "v"
-map("n", "sh", ":sp<CR>", opt)
--- close recent window
-map("n", "sc", "<C-w>c", opt)
--- clase others
-map("n", "so", "<C-w>o", opt) -- close others
--- alt + hjkl  switch to other windows
-map("n", "<A-h>", "<C-w>h", opt)
-map("n", "<A-j>", "<C-w>j", opt)
-map("n", "<A-k>", "<C-w>k", opt)
-map("n", "<A-l>", "<C-w>l", opt)
--- <leader> + hjkl swith to others
-map("n", "<leader>h", "<C-w>h", opt)
-map("n", "<leader>j", "<C-w>j", opt)
-map("n", "<leader>k", "<C-w>k", opt)
-map("n", "<leader>l", "<C-w>l", opt)
--- horizon change the weight
-map("n", "<C-Left>", ":vertical resize -2<CR>", opt) -- not effective in Mac
-map("n", "<C-Right>", ":vertical resize +2<CR>", opt) -- not effective in Mac
-map("n", "s,", ":vertical resize -10<CR>", opt)
-map("n", "s.", ":vertical resize +10<CR>", opt)
--- change the higth
-map("n", "sj", ":resize +10<CR>", opt)
-map("n", "sk", ":resize -10<CR>", opt)
-map("n", "<A-Down>", ":resize +2<CR>", opt)
-map("n", "<A-Up>", ":resize -2<CR>", opt)
--- set back to equal
-map("n", "s=", "<C-w>=", opt)
+if keys.s_windows ~= nil and keys.s_windows.enable then
+  local skey = keys.s_windows
+  -- remap s
+  keymap("n", "s", "")
+  keymap("n", skey.split_vertically, ":vsp<CR>")
+  keymap("n", skey.split_horizontally, ":sp<CR>")
+  -- close recent
+  keymap("n", skey.close, "<C-w>c")
+  -- close others
+  keymap("n", skey.close_others, "<C-w>o") -- close others
+  -- alt + hjkl  jumping between windows
+  keymap("n", skey.jump_left, "<C-w>h")
+  keymap("n", skey.jump_down, "<C-w>j")
+  keymap("n", skey.jump_up, "<C-w>k")
+  keymap("n", skey.jump_right, "<C-w>l")
+  -- rate controls
+  keymap("n", skey.width_decrease, ":vertical resize -10<CR>")
+  keymap("n", skey.width_increase, ":vertical resize +10<CR>")
+  keymap("n", skey.height_decrease, ":vertical resize -10<CR>")
+  keymap("n", skey.height_increase, ":vertical resize +10<CR>")
+  keymap("n", skey.size_equal, "<C-w>=")
+end
 
+if keys.s_tab ~= nil then
+  local tkey = keys.s_tab
+  keymap("n", tkey.split, "<CMD>tab split<CR>")
+  keymap("n", tkey.close, "<CMD>tabclose<CR>")
+  keymap("n", tkey.next, "<CMD>tabnext<CR>")
+  keymap("n", tkey.prev, "<CMD>tabprev<CR>")
+  keymap("n", tkey.first, "<CMD>tabfirst<CR>")
+  keymap("n", tkey.last, "<CMD>tablast<CR>")
+end
+
+-- treesitter fold
+keymap("n", keys.fold.open, ":foldopen<CR>")
+keymap("n", keys.fold.close, ":foldclose<CR>")
+
+keymap("n", keys.format, "<cmd>lua vim.lsp.buf.formatting()<CR>")
+
+-- Esc back to  Normal mode
+keymap("t", keys.terminal_to_normal, "<C-\\><C-n>")
 -- Terminal related
-map("n", "st", ":sp | terminal<CR>", opt)
-map("n", "stv", ":vsp | terminal<CR>", opt)
--- Esc back to normal
-map("t", "<Esc>", "<C-\\><C-n>", opt)
-map("t", "<A-h>", [[ <C-\><C-N><C-w>h ]], opt)
-map("t", "<A-j>", [[ <C-\><C-N><C-w>j ]], opt)
-map("t", "<A-k>", [[ <C-\><C-N><C-w>k ]], opt)
-map("t", "<A-l>", [[ <C-\><C-N><C-w>l ]], opt)
-map("t", "<leader>h", [[ <C-\><C-N><C-w>h ]], opt)
-map("t", "<leader>j", [[ <C-\><C-N><C-w>j ]], opt)
-map("t", "<leader>k", [[ <C-\><C-N><C-w>k ]], opt)
-map("t", "<leader>l", [[ <C-\><C-N><C-w>l ]], opt)
+-- map("n", "st", ":sp | terminal<CR>", opt)
+-- map("n", "stv", ":vsp | terminal<CR>", opt)
+-- map("t", "<A-h>", [[ <C-\><C-N><C-w>h ]], opt)
+-- map("t", "<A-j>", [[ <C-\><C-N><C-w>j ]], opt)
+-- map("t", "<A-k>", [[ <C-\><C-N><C-w>k ]], opt)
+-- map("t", "<A-l>", [[ <C-\><C-N><C-w>l ]], opt)
+-- map("t", "<leader>h", [[ <C-\><C-N><C-w>h ]], opt)
+-- map("t", "<leader>j", [[ <C-\><C-N><C-w>j ]], opt)
+-- map("t", "<leader>k", [[ <C-\><C-N><C-w>k ]], opt)
+-- map("t", "<leader>l", [[ <C-\><C-N><C-w>l ]], opt)
+
 --------------------------------------------------------------------
--- plugin shortcuts
+-- plugin 
 local pluginKeys = {}
 
--- nvim-tree
--- alt + m open tree
-map("n", "<A-m>", ":NvimTreeToggle<CR>", opt)
--- List
-pluginKeys.nvimTreeList = {
-  -- open files or directories
-  { key = {"<CR>", "o", "<2-LeftMouse>"}, action = "edit" },
-  -- open in a new window
-  { key = "v", action = "vsplit" },
-  { key = "h", action = "split" },
-  -- show the hidden files
-  { key = "i", action = "toggle_custom" }, -- 对应 filters 中的 custom (node_modules)
-  { key = ".", action = "toggle_dotfiles" }, -- Hide (dotfiles)
-  -- operation
-  { key = "<F5>", action = "refresh" },
-  { key = "a", action = "create" },
-  { key = "d", action = "remove" },
-  { key = "r", action = "rename" },
-  { key = "x", action = "cut" },
-  { key = "c", action = "copy" },
-  { key = "p", action = "paste" },
-  { key = "s", action = "system_open" },
-}
-
--- bufferline
--- Tab switch
-map("n", "<C-h>", ":BufferLineCyclePrev<CR>", opt)
-map("n", "<C-l>", ":BufferLineCycleNext<CR>", opt)
--- close
---"moll/vim-bbye"
-map("n", "<C-w>", ":Bdelete!<CR>", opt)
-map("n", "<leader>bl", ":BufferLineCloseRight<CR>", opt)
-map("n", "<leader>bh", ":BufferLineCloseLeft<CR>", opt)
-map("n", "<leader>bc", ":BufferLinePickClose<CR>", opt)
-
--- Telescope
--- find files
-map("n", "<C-p>", ":Telescope find_files<CR>", opt)
--- find by grep
-map("n", "<C-f>", ":Telescope live_grep<CR>", opt)
--- Telescope mappings in List with different modes
-pluginKeys.telescopeList = {
-  i = {
-    -- move up and down
-    ["<C-j>"] = "move_selection_next",
-    ["<C-k>"] = "move_selection_previous",
-    ["<Down>"] = "move_selection_next",
-    ["<Up>"] = "move_selection_previous",
-    -- history
-    ["<C-n>"] = "cycle_history_next",
-    ["<C-p>"] = "cycle_history_prev",
-    -- close window
-    ["<C-c>"] = "close",
-    -- preview_scrolling_up and down
-    ["<C-u>"] = "preview_scrolling_up",
-    ["<C-d>"] = "preview_scrolling_down",
-  },
-}
-
---------------------------------------------------------------------
--- lsp keybindings
+-- lsp function call related
+local lsp = uConfig.lsp
 pluginKeys.mapLSP = function(mapbuf)
   -- rename
   --[[
   Lspsaga replace rn
   mapbuf("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", opt)
   --]]
-  mapbuf("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opt)
+  mapbuf("n", lsp.rename, "<cmd>lua vim.lsp.buf.rename()<CR>")
   -- code action
   --[[
   Lspsaga replace ca
   mapbuf("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opt)
   --]]
-  mapbuf("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opt)
+  mapbuf("n", lsp.code_action, "<cmd>lua vim.lsp.buf.code_action()<CR>")
   -- go xx
   --[[
     mapbuf('n', 'gd', '<cmd>Lspsaga preview_definition<CR>', opt)
   mapbuf("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opt)
   --]]
-  mapbuf("n", "gd", "<cmd>lua require'telescope.builtin'.lsp_definitions({ initial_mode = 'normal', })<CR>", opt)
+
+  mapbuf("n", lsp.definition, function()
+    require("telescope.builtin").lsp_definitions({
+      initial_mode = "normal",
+      -- ignore_filename = false,
+    })
+  end)
   --[[
   mapbuf("n", "gh", "<cmd>Lspsaga hover_doc<cr>", opt)
   Lspsaga replace gh
   --]]
-  mapbuf("n", "gh", "<cmd>lua vim.lsp.buf.hover()<CR>", opt)
+  mapbuf("n", lsp.hover, "<cmd>lua vim.lsp.buf.hover()<CR>")
   --[[
   Lspsaga replace gr
   mapbuf("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opt)
-  --]]
   mapbuf("n", "gr", "<cmd>Lspsaga lsp_finder<CR>", opt)
+  --]]
+  mapbuf(
+    "n",
+    lsp.references,
+    "<cmd>lua require'telescope.builtin'.lsp_references(require('telescope.themes').get_ivy())<CR>"
+  )
+
+  if vim.fn.has("nvim-0.8") == 1 then
+    mapbuf("n", lsp.format, "<cmd>lua vim.lsp.buf.format({ async = true })<CR>")
+  else
+    mapbuf("n", lsp.format, "<cmd>lua vim.lsp.buf.formatting()<CR>")
+  end
+
   --[[
   Lspsaga replace gp, gj, gk
   mapbuf("n", "gp", "<cmd>lua vim.diagnostic.open_float()<CR>", opt)
@@ -230,10 +201,13 @@ pluginKeys.mapLSP = function(mapbuf)
   mapbuf("n", "gk", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opt)
   --]]
   -- diagnostic
-  mapbuf("n", "gp", "<cmd>Lspsaga show_line_diagnostics<CR>", opt)
-  mapbuf("n", "gj", "<cmd>Lspsaga diagnostic_jump_next<cr>", opt)
-  mapbuf("n", "gk", "<cmd>Lspsaga diagnostic_jump_prev<cr>", opt)
-  mapbuf("n", "<leader>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opt)
+  -- mapbuf("n", "gp", "<cmd>Lspsaga show_line_diagnostics<CR>", opt)
+  -- mapbuf("n", "gj", "<cmd>Lspsaga diagnostic_jump_next<cr>", opt)
+  -- mapbuf("n", "gk", "<cmd>Lspsaga diagnostic_jump_prev<cr>", opt)
+
+  mapbuf("n", lsp.open_flow, "<cmd>lua vim.diagnostic.open_float()<CR>")
+  mapbuf("n", lsp.goto_next, "<cmd>lua vim.diagnostic.goto_next()<CR>")
+  mapbuf("n", lsp.goto_prev, "<cmd>lua vim.diagnostic.goto_prev()<CR>")
   -- unused
   -- mapbuf("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opt)
   -- mapbuf("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opt)
@@ -245,29 +219,115 @@ pluginKeys.mapLSP = function(mapbuf)
   -- mapbuf('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opt)
 end
 
--- nvim-cmp 
-pluginKeys.cmp = function(cmp)
-    return {
-        -- popping up
-        ["<A-.>"] = cmp.mapping(cmp.mapping.complete(), {"i", "c"}),
-        -- cancle
-        ["<A-,>"] = cmp.mapping({
-            i = cmp.mapping.abort(),
-            c = cmp.mapping.close()
-        }),
-        -- previous
-        ["<C-k>"] = cmp.mapping.select_prev_item(),
-        -- next
-        ["<C-j>"] = cmp.mapping.select_next_item(),
-        -- choose
-        ["<CR>"] = cmp.mapping.confirm({
-            select = true,
-            behavior = cmp.ConfirmBehavior.Replace
-        }),
-        -- scrolling
-        ["<C-u>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), {"i", "c"}),
-        ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(4), {"i", "c"}),
-    }
+-- typescript 
+pluginKeys.mapTsLSP = function(bufnr)
+  local bufopts = { noremap = true, silent = true, buffer = bufnr }
+  keymap("n", lsp.ts_organize, ":TSLspOrganize<CR>", bufopts)
+  keymap("n", lsp.ts_rename_file, ":TSLspRenameFile<CR>", bufopts)
+  keymap("n", lsp.ts_add_missing_import, ":TSLspImportAll<CR>", bufopts)
+end
+
+-- nvim-dap
+pluginKeys.mapDAP = function()
+  -- begin
+  map("n", "<leader>dd", ":RustDebuggables<CR>", opt)
+  -- ends
+  map(
+    "n",
+    "<leader>de",
+    ":lua require'dap'.close()<CR>"
+      .. ":lua require'dap'.terminate()<CR>"
+      .. ":lua require'dap.repl'.close()<CR>"
+      .. ":lua require'dapui'.close()<CR>"
+      .. ":lua require('dap').clear_breakpoints()<CR>"
+      .. "<C-w>o<CR>",
+    opt
+  )
+  -- continue
+  map("n", "<leader>dc", ":lua require'dap'.continue()<CR>", opt)
+  -- set breakpoint
+  map("n", "<leader>dt", ":lua require('dap').toggle_breakpoint()<CR>", opt)
+  map("n", "<leader>dT", ":lua require('dap').clear_breakpoints()<CR>", opt)
+  --  stepOver, stepOut, stepInto
+  map("n", "<leader>dj", ":lua require'dap'.step_over()<CR>", opt)
+  map("n", "<leader>dk", ":lua require'dap'.step_out()<CR>", opt)
+  map("n", "<leader>dl", ":lua require'dap'.step_into()<CR>", opt)
+  -- pop windows
+  map("n", "<leader>dh", ":lua require'dapui'.eval()<CR>", opt)
+end
+
+-- vimspector
+pluginKeys.mapVimspector = function()
+  -- begin
+  map("n", "<leader>dd", ":call vimspector#Launch()<CR>", opt)
+  -- ends
+  map("n", "<Leader>de", ":call vimspector#Reset()<CR>", opt)
+  -- continue
+  map("n", "<Leader>dc", ":call vimspector#Continue()<CR>", opt)
+  -- set breakpoint
+  map("n", "<Leader>dt", ":call vimspector#ToggleBreakpoint()<CR>", opt)
+  map("n", "<Leader>dT", ":call vimspector#ClearBreakpoints()<CR>", opt)
+  --  stepOver, stepOut, stepInto
+  map("n", "<leader>dj", "<Plug>VimspectorStepOver", opt)
+  map("n", "<leader>dk", "<Plug>VimspectorStepOut", opt)
+  map("n", "<leader>dl", "<Plug>VimspectorStepInto", opt)
+end
+
+-- gitsigns
+pluginKeys.gitsigns_on_attach = function(bufnr)
+  local gs = package.loaded.gitsigns
+
+  local function map(mode, l, r, opts)
+    opts = opts or {}
+    opts.buffer = bufnr
+    vim.keymap.set(mode, l, r, opts)
+  end
+
+  -- Navigation
+  map("n", "<leader>gj", function()
+    if vim.wo.diff then
+      return "]c"
+    end
+    vim.schedule(function()
+      gs.next_hunk()
+    end)
+    return "<Ignore>"
+  end, {
+    expr = true,
+  })
+
+  map("n", "<leader>gk", function()
+    if vim.wo.diff then
+      return "[c"
+    end
+    vim.schedule(function()
+      gs.prev_hunk()
+    end)
+    return "<Ignore>"
+  end, {
+    expr = true,
+  })
+
+  map({ "n", "v" }, "<leader>gs", ":Gitsigns stage_hunk<CR>")
+  map("n", "<leader>gS", gs.stage_buffer)
+  map("n", "<leader>gu", gs.undo_stage_hunk)
+  map({ "n", "v" }, "<leader>gr", ":Gitsigns reset_hunk<CR>")
+  map("n", "<leader>gR", gs.reset_buffer)
+  map("n", "<leader>gp", gs.preview_hunk)
+  map("n", "<leader>gb", function()
+    gs.blame_line({
+      full = true,
+    })
+  end)
+  map("n", "<leader>gd", gs.diffthis)
+  map("n", "<leader>gD", function()
+    gs.diffthis("~")
+  end)
+  -- toggle
+  map("n", "<leader>gtd", gs.toggle_deleted)
+  map("n", "<leader>gtb", gs.toggle_current_line_blame)
+  -- Text object
+  map({ "o", "x" }, "ig", ":<C-U>Gitsigns select_hunk<CR>")
 end
 
 return pluginKeys

@@ -1,13 +1,13 @@
-local status, ident_blankline = pcall(require, "indent_blankline")
+local status, indent_blankline = pcall(require, "indent_blankline")
 if not status then
-  vim.notify("no indent_blankline")
+  vim.notify("没有找到 indent_blankline")
   return
 end
 
-ident_blankline.setup({
-  -- space char
+indent_blankline.setup({
+  -- Blank space
   space_char_blankline = " ",
-  -- treesitter 
+  -- Judging context with treesitter
   show_current_context = true,
   show_current_context_start = true,
   context_patterns = {
@@ -23,8 +23,9 @@ ident_blankline.setup({
     "block",
     "arguments",
   },
-  -- :echo &filetype
+  -- echo &filetype
   filetype_exclude = {
+    "null-ls-info",
     "dashboard",
     "packer",
     "terminal",
@@ -35,8 +36,9 @@ ident_blankline.setup({
     "lsp-installer",
     "lspinfo",
     "toggleterm",
+    "text",
   },
-  -- -- blankline tpyes
+  -- vertical bar style
   -- char = '¦'
   -- char = '┆'
   -- char = '│'
