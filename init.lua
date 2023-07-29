@@ -1,3 +1,16 @@
+--[[
+   Copyleft (CL) 2023-2033 Ethan YF Lin
+
+   Something good as indicated, by Dr YF Lin <e.yflin@gmail.com>
+   URL: https://github.com/Ethanlinyf/TE-NeoVim
+   Under ThingsEngine Project: https://www.thethingsengine.org
+   -------------------------------------------------------------------
+   Commentary:
+   TE-NeoVim init configurations 
+   -------------------------------------------------------------------
+--]]
+
+
 -- require("impatient")
 require("utils.global")
 
